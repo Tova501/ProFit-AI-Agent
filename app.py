@@ -72,31 +72,31 @@ def ai_analyzer():
         for page in pdf.pages:
             pdf_text += page.extract_text() + "\n"
     os.remove(pdf_file_path)
-    # response = openai.ChatCompletion.create(
-    #     model="gpt-3.5-turbo",
-    #     messages=[
-    #         {
-    #             "role": "system",
-    #             "content": "You are an AI model that analyzes CVs for job suitability."
-    #         },
-    #         {
-    #             "role": "user",
-    #             "content": f"""You have been provided with a job description and the content of a candidate's CV.
-    #             Your task is to evaluate the candidate's suitability for the position based on their experience, knowledge, education, and personal fit with the job requirements.
-    #             Please provide a score from 0 to 100 and a verbal assessment of the candidate's abilities and suitability for the position.
-    #             The response should be in JSON format (without the word JSON itself):
-    #             {{
-    #                 "score": x,
-    #                 "assessment": "..."
-    #             }} 
-    #             Job requirements: {job_requirements},
-    #             The CV content: {pdf_text}
-    #             """
-    #         }
-    #     ]
-    # )
+    response = openai.ChatCompletion.create(
+        model="gpt-3.5-turbo",
+        messages=[
+            {
+                "role": "system",
+                "content": "You are an AI model that analyzes CVs for job suitability."
+            },
+            {
+                "role": "user",
+                "content": f"""You have been provided with a job description and the content of a candidate's CV.
+                Your task is to evaluate the candidate's suitability for the position based on their experience, knowledge, education, and personal fit with the job requirements.
+                Please provide a score from 0 to 100 and a verbal assessment of the candidate's abilities and suitability for the position.
+                The response should be in JSON format (without the word JSON itself):
+                {{
+                    "score": x,
+                    "assessment": "..."
+                }} 
+                Job requirements: {job_requirements},
+                The CV content: {pdf_text}
+                """
+            }
+        ]
+    )
 
-    # answer = response['choices'][0]['message']['content']
+    answer = response['choices'][0]['message']['content']
     answer = {
         "score": 85,
         "assessment": "The candidate has a strong background in software development with relevant experience in Python and JavaScript. They have a good educational background and demonstrate a solid understanding of the required technologies. Overall, they are a suitable candidate for the position."
