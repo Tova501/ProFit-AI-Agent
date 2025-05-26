@@ -4,7 +4,6 @@ import os
 import requests
 import pdfplumber
 from dotenv import load_dotenv
-from flasgger import Swagger
 from flask_cors import CORS
 
 
@@ -12,10 +11,8 @@ load_dotenv()
 
 app = Flask(__name__)
 CORS(app) 
-swagger = Swagger(app)
 
 openai.api_key = os.environ.get("OPENAI_API_KEY")
-
 
 @app.route('/ai-analyzer', methods=['POST'])
 def ai_analyzer():
