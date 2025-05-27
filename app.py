@@ -84,7 +84,7 @@ def ai_analyzer():
             pdf_text += page.extract_text() + "\n"
     os.remove(pdf_file_path)
     response = client.chat.completions.create(
-        model="gpt-3.5-turbo",
+        model="gpt-4o-mini",
         messages=[
             {
                 "role": "system",
