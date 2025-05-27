@@ -107,11 +107,7 @@ def ai_analyzer():
         ]
     )
 
-    answer = response['choices'][0]['message']['content']
-    answer = {
-        "score": 85,
-        "assessment": "The candidate has a strong background in software development with relevant experience in Python and JavaScript. They have a good educational background and demonstrate a solid understanding of the required technologies. Overall, they are a suitable candidate for the position."
-    }
+    answer = response.choices[0].message.content
     return jsonify({"response": answer})
 
 
