@@ -4,3 +4,4 @@ requests==2.31.0
 pdfplumber==0.9.0
 python-dotenv==1.0.0
 openai==0.27.8
+httpx==1.4.0
