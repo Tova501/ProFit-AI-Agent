@@ -95,10 +95,12 @@ def ai_analyzer():
                 "content": f"""You have been provided with a job description and the content of a candidate's CV.
                 Your task is to evaluate the candidate's suitability for the position based on their experience, knowledge, education, and personal fit with the job requirements.
                 Please provide a score from 0 to 100 and a verbal assessment of the candidate's abilities and suitability for the position.
-                The response should be in JSON format (without the word JSON itself):
+                The response should be in JSON format with the following structure (the arrays can be empty if not applicable):
                 {{
                     "score": x,
-                    "assessment": "..."
+                    "adventages": ["...", "..."],
+                    "disadvantages": ["...", "..."],
+                    "recommendation": "...",
                 }} 
                 Job requirements: {job_requirements},
                 The CV content: {pdf_text}
